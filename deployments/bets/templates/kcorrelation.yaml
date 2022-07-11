@@ -1,0 +1,9 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: bets-correlation-id
+config:
+  header_name: Kong-Request-ID
+  generator: uuid#counter
+  echo_downstream: true
+plugin: correlation-id

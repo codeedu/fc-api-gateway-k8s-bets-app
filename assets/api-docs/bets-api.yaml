@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: Bets - Bets API
+  version: 2.0.0
+  contact:
+    name: Bets
+    email: bets@example.com
+servers:
+  -
+    url: 'http://localhost:9999/api'
+    description: Development Environment
+  -
+    url: 'https://bets.api.com'
+    description: Production Environment
+
+tags:
+  - name: bets
+    description: Everything about your Bets
+
+paths:
+  /bets:
+    summary: >-
+      Funny API to play with your family and friends, it will provide a consistent back-end to support
+      your bets
+    description: Bets API will provide a friendly interface to support you in your family games
+    servers:
+      -
+        url: 'http://localhost:9999/api'
+        description: Development Environment
+      -
+        url: 'https://bets.api.com'
+        description: Production Environment
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                homeTeamScore:
+                  type: string
+                awayTeamScore:
+                  type: string
+                championship:
+                  type: string
+                match:
+                  type: string
+                email:
+                  type: string
+        required: true
+      tags:
+        - bets
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bet-created'
+              examples:
+                bet:
+                  value:
+                    match: 1X-DC
+                    email: joe@doe.com
+                    championship: Uefa Champions League
+                    awayTeamScore: '2'
+                    homeTeamScore: '3'
+          description: ''
+      operationId: create-bet
+      summary: Create Bet
+components:
+  schemas:
+    bet-created:
+      title: Root Type for bet-created
+      description: When bet was created successfully
+      type: object
+      properties:
+        match:
+          type: string
+        email:
+          type: string
+        championship:
+          type: string
+        awayTeamScore:
+          type: string
+        homeTeamScore:
+          type: string
+      example:
+        match: 1X-DC
+        email: joe@doe.com
+        championship: Uefa Champions League
+        awayTeamScore: '2'
+        homeTeamScore: '3'
+    request-create-bet:
+      title: Root Type for request-create-bet
+      description: Request data to create a bet
+      type: object
+      properties:
+        homeTeamScore:
+          type: string
+        awayTeamScore:
+          type: string
+        championship:
+          type: string
+        match:
+          type: string
+        email:
+          type: string
+      example:
+        homeTeamScore: '3'
+        awayTeamScore: '2'
+        championship: Uefa Champions League
+        match: 1X-DC
+        email: joe@doe.com

@@ -1,0 +1,9 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: bets-tcp-log
+config:
+  host: fluentd.logs
+  port: 24224
+  tls: false
+plugin: tcp-log

@@ -1,0 +1,141 @@
+{
+  "_": {
+    "postman_id": "6da42770-11dc-4642-86c5-7cb55b567dad"
+  },
+  "item": [
+    {
+      "id": "9b6845c4-891a-49a9-984d-0295a886d415",
+      "name": "Contract Tests",
+      "item": [
+        {
+          "id": "f2ff59d2-c3b3-4f56-9dd2-1da3ba9b2557",
+          "name": "bets",
+          "item": [
+            {
+              "id": "6d53c8f4-ea25-416c-a027-62faf6a661e7",
+              "name": "Create Bet",
+              "request": {
+                "name": "Create Bet",
+                "description": {
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "bets"
+                  ],
+                  "host": [
+                    "{{bets-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"homeTeamScore\": \"3\",\n  \"awayTeamScore\": \"2\",\n  \"championship\": \"Uefa Champions League\",\n  \"match\": \"1X-DC\",\n  \"email\": \"joe@doe.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "_": {
+                    "postman_previewlanguage": "json"
+                  },
+                  "id": "62a4ac10-f16e-4e12-9750-09d33e2d5f5e",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "bets"
+                      ],
+                      "host": [
+                        "{{bets-Url}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"homeTeamScore\": \"3\",\n  \"awayTeamScore\": \"2\",\n  \"championship\": \"Uefa Champions League\",\n  \"match\": \"1X-DC\",\n  \"email\": \"joe@doe.com\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"match\": \"1X-DC\",\n  \"email\": \"joe@doe.com\",\n  \"championship\": \"Uefa Champions League\",\n  \"awayTeamScore\": \"2\",\n  \"homeTeamScore\": \"3\"\n}",
+                  "cookie": []
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2517a972-e6fe-4857-8481-49c0a560bf39",
+                    "type": "text/javascript",
+                    "exec": [
+                      "// Validate status 2xx \npm.test(\"[POST]::/bets - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
+                      "// Validate if response header has matching content-type\npm.test(\"[POST]::/bets - Content-Type is application/json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\n});\n",
+                      "// Validate if response has JSON Body \npm.test(\"[POST]::/bets - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n",
+                      "// Response Validation\nconst schema = {\"title\":\"Root Type for bet-created\",\"description\":\"When bet was created successfully\",\"type\":\"object\",\"properties\":{\"match\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"championship\":{\"type\":\"string\"},\"awayTeamScore\":{\"type\":\"string\"},\"homeTeamScore\":{\"type\":\"string\"}},\"example\":{\"match\":\"1X-DC\",\"email\":\"joe@doe.com\",\"championship\":\"Uefa Champions League\",\"awayTeamScore\":\"2\",\"homeTeamScore\":\"3\"}}\n\n// Validate if response matches JSON schema \npm.test(\"[POST]::/bets - Schema is valid\", function() {\n    pm.response.to.have.jsonSchema(schema,{unknownFormats: [\"int32\", \"int64\", \"float\", \"double\"]});\n});\n"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:4010",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:4010",
+      "key": "bets-Url"
+    }
+  ],
+  "info": {
+    "_postman_id": "6da42770-11dc-4642-86c5-7cb55b567dad",
+    "name": "Bets - Bets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

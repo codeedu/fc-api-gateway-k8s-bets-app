@@ -1,0 +1,14 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: bets-otel
+config:
+  local_service_name: kong
+  http_endpoint: http://kong-meetup-collector.observability:9411/api/v2/spans
+  sample_ratio: 1
+  include_credential: true
+  traceid_byte_count: 16
+  header_type: preserve
+  default_header_type: ot
+  tags_header: Zipkin-Tags
+plugin: zipkin

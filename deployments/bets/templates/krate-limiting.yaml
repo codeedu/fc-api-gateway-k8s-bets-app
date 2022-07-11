@@ -1,0 +1,11 @@
+{{- if .Values.kong.enabled -}}
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: rl-by-header
+config:
+  minute: 100000
+  limit_by: ip
+  policy: local
+plugin: rate-limiting
+{{end}}
