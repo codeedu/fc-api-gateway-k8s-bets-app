@@ -4,7 +4,7 @@ kind: KongPlugin
 metadata:
   name: bets-logs
 config:
-  host: 10.96.73.182
+  host: 10.96.38.255
   port: 24224
   tls: false
 plugin: tcp-log
