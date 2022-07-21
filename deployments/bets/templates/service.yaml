@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "bets.fullname" . }}
   annotations:
-    konghq.com/plugins: prometheus-bets
+    konghq.com/plugins: prometheus-bets,bets-logs
     ingress.kubernetes.io/service-upstream: "true"
   labels:
     {{- include "bets.labels" . | nindent 4 }}
