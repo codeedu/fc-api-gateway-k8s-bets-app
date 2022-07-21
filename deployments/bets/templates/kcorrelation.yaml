@@ -4,6 +4,6 @@ metadata:
   name: bets-correlation-id
 config:
   header_name: Kong-Request-ID
-  generator: uuid#counter
+  generator: uuid
   echo_downstream: true
 plugin: correlation-id
