@@ -7,4 +7,8 @@ route:
   preserve_host: false
 upstream:
   host_header: {{ include "bets.fullname" . }}.bets.svc
+proxy:
+  connect_timeout: 2000
+  read_timeout: 2000
+  write_timeout: 2000
 {{end}}

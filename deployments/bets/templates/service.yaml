@@ -4,6 +4,7 @@ metadata:
   name: {{ include "bets.fullname" . }}
   annotations:
     konghq.com/plugins: prometheus-bets
+    ingress.kubernetes.io/service-upstream: "true"
   labels:
     {{- include "bets.labels" . | nindent 4 }}
 spec:
