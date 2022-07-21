@@ -4,7 +4,7 @@ kind: KongPlugin
 metadata:
   name: bets-logs
 config:
-  host: fluentd.logs
+  host: 10.96.73.182
   port: 24224
   tls: false
 plugin: tcp-log
