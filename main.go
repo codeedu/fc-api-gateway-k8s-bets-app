@@ -29,7 +29,7 @@ import (
 
 var log *zerolog.Logger
 var tracer = otel.Tracer("echo-server")
-var httpClient *http.Client
+var httpClient *http.Client 
 
 func init() {
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
