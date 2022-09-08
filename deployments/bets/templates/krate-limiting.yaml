@@ -4,7 +4,7 @@ kind: KongPlugin
 metadata:
   name: rl-by-header
 config:
-  minute: 100000
+  minute: 10
   limit_by: ip
   policy: local
 plugin: rate-limiting

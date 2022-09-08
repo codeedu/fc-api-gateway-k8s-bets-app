@@ -5,7 +5,7 @@ metadata:
   name: oidc-bets
 config:
   client_id: "kong"
-  client_secret: "ohSN0VS9Qtdi5KCLmkj52jGFU91FQJn2"
+  client_secret: "KdtwfpbT3hWgy18ElnxqftXUFVY7kFSu"
   discovery: "http://keycloak.iam/realms/bets/.well-known/openid-configuration"
   introspection_endpoint: "http://keycloak.iam/realms/bets/protocol/openid-connect/token/introspect"
   bearer_only: "yes"
